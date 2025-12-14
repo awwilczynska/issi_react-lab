@@ -5,9 +5,13 @@ import {useState} from "react";
 function App() {
     const [title, setTitle] = useState('Wall-E'); //stan
 
-    function handleChange(event) {
-        setTitle(event.target.value); //zachowanie
-    }
+    // function handleChange(event) {
+    //     setTitle(event.target.value); //zachowanie
+    // }
+    //
+    // function handleOnClick(event) {
+    //     alert(title); //zachowanie
+    // }
 
     let msg = '';
     if (title.length < 3) {
@@ -25,7 +29,10 @@ function App() {
             {
                 title.length > 0 && <div>{msg}</div>
             }
-            <input type="text" onChange={handleChange}/>
+            {/*<input type="text" onChange={handleChange}/>*/}
+            <input type="text" onChange={(event)=>setTitle(event.target.value)}/>
+            {/*<button onClick={handleOnClick}>Show film title</button>*/}
+            <button onClick={()=>alert(title)}>Show film title</button>
         </div> //struktura
     );
 }
