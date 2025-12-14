@@ -1,20 +1,32 @@
 import './App.css';
+import {useState} from "react";
 
 function App() {
-    let title ='Wall-E';
+    const [title, setTitle] = useState('Wall-E'); //stan
 
     function handleChange(event) {
-
-        console.log(event.target.value);
-
+        setTitle(event.target.value); //zachowanie
     }
-  return (
-    <div>
-        <h1> My favourite movies to watch</h1>
-        <h2> My favourite movie for today is {title}</h2>
-        <input type="text" onChange={handleChange}/>
-    </div>
-  );
+
+    let msg = '';
+    if (title.length < 3) {
+        msg = 'Title is too short';
+    } else if (title.length >= 3 && title.length < 15) {
+        msg = 'Title is OK';
+    } else {
+        msg = 'Title is too long';
+    }
+
+    return (
+        <div>
+            <h1> My favourite movies to watch</h1>
+            <h2> My favourite movie for today is {title}</h2>
+            {
+                title.length > 0 && <div>{msg}</div>
+            }
+            <input type="text" onChange={handleChange}/>
+        </div> //struktura
+    );
 }
 
 export default App;
